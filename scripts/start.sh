@@ -20,7 +20,7 @@ FILES=$(find . -type f \
   -not -path './.git/*')
 
 for f in $FILES; do
-  perl -pi -e "s/\Q$OLD_MODULE\E/$NEW_MODULE/g; s/\b\Q$OLD_NAME\E\b/$NEW_NAME/g" "$f"
+  perl -pi -e "s#\Q$OLD_MODULE\E#$NEW_MODULE#g; s#\b\Q$OLD_NAME\E\b#$NEW_NAME#g" "$f"
 done
 
 go mod tidy
