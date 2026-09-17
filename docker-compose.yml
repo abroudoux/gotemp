@@ -6,8 +6,10 @@ services:
       context: ./
       dockerfile: dockerfile
       target: dev
-    # ports:
-    #   - "8080:8080"
+    env_file:
+      - .env
+    ports:
+      - "${PORT:-8080}:${PORT:-8080}"
     volumes:
       - ./:/app
       - go-mod-cache:/go/pkg/mod

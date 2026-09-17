@@ -22,7 +22,7 @@ copy go.mod go.sum ./
 
 run go mod download
 
-# expose 8080
+expose 8080
 
 entrypoint [ "air", "-c", ".air.toml" ]
 
@@ -32,6 +32,6 @@ workdir /app
 
 copy --from=builder /app/gotemp .
 
-# expose 8080
+expose 8080
 
 entrypoint [ "./gotemp" ]
