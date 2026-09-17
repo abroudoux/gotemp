@@ -1,0 +1,26 @@
+version: "3"
+
+tasks:
+  compile:
+    desc: compile gotemp
+    cmds:
+      - go build -o bin/gotemp ./cmd/main.go
+
+  run:
+    desc: run gotemp
+    deps:
+      - compile
+    cmds:
+      - ./bin/gotemp
+
+  docker:dev:
+    desc: run gotemp in dev mode, removing containers on stop
+    cmds:
+      - defer: docker compose down
+      - docker compose up -V --build
+
+  docker:prod:
+    desc: run gotemp in prod mode, removing containers on stop
+    cmds:
+      - defer: docker compose -f docker-compose.prod.yml down
+      - docker compose -f docker-compose.prod.yml up --build

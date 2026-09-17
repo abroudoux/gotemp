@@ -1,0 +1,7 @@
+.gitignore
+taskfile.md
+readme.md
+.dockerignore
+docker-compose.yml
+docker-compose.prod.yml
+dockerfile

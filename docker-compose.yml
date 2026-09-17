@@ -1,0 +1,19 @@
+services:
+  gotemp:
+    container_name: gotemp-dev
+    image: gotemp-dev
+    build:
+      context: ./
+      dockerfile: dockerfile
+      target: dev
+    # ports:
+    #   - "8080:8080"
+    volumes:
+      - ./:/app
+      - go-mod-cache:/go/pkg/mod
+      - go-build-cache:/root/.cache/go-build
+    restart: unless-stopped
+
+volumes:
+  go-mod-cache:
+  go-build-cache:
